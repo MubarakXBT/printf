@@ -4,10 +4,10 @@
 #include "main.h"
 /**
  *_printf - Prototype for Printf function
- *@fmt: The argument to be printed
- *Description: This program Will provide a minimal function of printf
+ *@format: The argument to be printed
  *
- * Return: The program should return The numbers of characters printed
+ * Return: The program should return
+ *         The numbers of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 	va_start(ptr, format);
 
 	/* Traversing along the arguments*/
-	for(init = format; *init != '\0'; init++)
+	for (init = format; *init != '\0'; init++)
 	{
 		count += 1;
 		if (*init  != '%')
@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 			continue;
 		}
 		init++;
-		switch(*init)
+		switch (*init)
 		{
 			case 'i':
 				ival = va_arg(ptr, int);
@@ -51,6 +51,7 @@ int _printf(const char *format, ...)
 			case 'c':
 				cval = va_arg(ptr, char*);
 				printf("%s", cval);
+				break;
 			case 's':
 				sval = va_arg(ptr, char*);
 				printf("%s", sval);
