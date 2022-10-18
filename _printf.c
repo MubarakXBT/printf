@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 				printf("%c", cval);
 				break;
 			case 's':
-				sval = va_arg(ptr,char *);
+				sval = va_arg(ptr, char *);
 				printf("%s", sval);
 				break;
 			case 'o':
