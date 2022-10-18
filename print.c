@@ -1,7 +1,7 @@
 /* Required Headers */
 #include <stdio.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include "main.h"
 /**
  *_printf - Prototype for Printf function
  *@fmt: The argument to be printed
@@ -9,7 +9,7 @@
  *
  * Return: The program should return The numbers of characters printed
  */
-void _printf(const char *fmt, ...)
+int _printf(const char *format, ...)
 {
 	/* Declaration of variables*/
 	int dval, ival;
@@ -22,10 +22,12 @@ void _printf(const char *fmt, ...)
 	va_list ptr;
 
 	/* Initiaise argument to the list pointer*/
-	va_start(ptr, fmt);
+	va_start(ptr, format);
 
-	for(init = fmt; *init != '\0'; init++)
+	/* Traversing along the arguments*/
+	for(init = format; *init != '\0'; init++)
 	{
+		count += 1;
 		if (*init  != '%')
 		{
 			putchar(*init);
@@ -59,13 +61,5 @@ void _printf(const char *fmt, ...)
 		}
 	}
 	va_end(ptr);
-}
-
-int main(void)
-{
-	int i = 10;
-	char *c = "SHELL";
-
-	_printf("This is %d\n%c", i, c);
-	return (0);
+	return (count);
 }
