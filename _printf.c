@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				sval = va_arg(ptr,char *);
-				puts(sval);
+				printf("%s", sval);
 				break;
 			case 'o':
 				ival = va_arg(ptr, unsigned int);
@@ -73,7 +73,12 @@ int _printf(const char *format, ...)
 				ival = va_arg(ptr, unsigned int);
 				printf("%X", ival);
 				break;
+			case'p':
+				sval = va_arg(ptr, void *);
+				printf("%#lx", sval);
+				break;
 			default:
+				putchar('%');
 				putchar(*init);
 				break;
 		}
