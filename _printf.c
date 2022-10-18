@@ -41,6 +41,10 @@ int _printf(const char *format, ...)
 				ival = va_arg(ptr, int);
 				printf("%i", ival);
 				break;
+			case 'b':
+				ival = va_arg(ptr, unsigned int);
+				printf("%i", ival);
+				break;
 			case 'd':
 				dval = va_arg(ptr, int);
 				printf("%d", dval);
@@ -74,8 +78,8 @@ int _printf(const char *format, ...)
 				printf("%X", ival);
 				break;
 			case'p':
-				sval = va_arg(ptr, void *);
-				printf("%#lx", sval);
+				ival = (long)va_arg(ptr, void *);
+				printf("%#x", ival);
 				break;
 			default:
 				putchar('%');
