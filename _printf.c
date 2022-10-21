@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	/** initialise the pointer to the arguments */
 	va_start(ptr, format);
 	/* Traversing between element of format */
-	for (format ; format[i] != '\0'; i++)
+	for (; format[i] != '\0'; i++)
 	{
 		/* when element is not '%' */
 		if (format[i] != '%')
