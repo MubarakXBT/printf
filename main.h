@@ -1,9 +1,7 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
-
-int _putchar(char c);
-int _printf(const char *format, ...);
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * struct print - structure for printing various types
@@ -16,6 +14,7 @@ typedef struct print
 	int (*f)(va_list);
 } print_t;
 
+int (*check_format(const char *format))(va_list);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_c(va_list c);

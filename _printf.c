@@ -1,92 +1,52 @@
-/* Required Headers */
-#include <stdio.h>
-#include <stdarg.h>
 #include "main.h"
+#include <stdarg.h>
 /**
- *_printf - Prototype for Printf function
- *@format: The argument to be printed
+ * _printf - function for format printing
+ * @format: list of arguments to printing
  *
- * Return: The program should return
- *         The numbers of characters printed
+ * Return: Number of characters to printing
  */
+
 int _printf(const char *format, ...)
 {
-	/* Declaration of variables*/
-	int dval;
-	unsigned int ival;
-	int count = 0;
-	char cval, *sval;
-	const char *init;
-	double fval;
-
-	/* Declare pointer for argument list */
 	va_list ptr;
+	/* Pointer to function "Va_list" */
+	int (*f)(va_list);
+	unsigned int i = 0, counter = 0;
 
-	/* Initiaise argument to the list pointer*/
+	/** initialise the pointer to the arguments */
 	va_start(ptr, format);
-
-	/* Traversing along the arguments*/
-	for (init = format; *init != '\0'; init++)
+	/* Traversing between element of format */
+	for (; format[i] != '\0'; i++)
 	{
-		count += 1;
-		if (*init  != '%')
+		/* when element is not '%' */
+		if (format[i] != '%')
 		{
-			putchar(*init);
+			_putchar(format[i]);
+			counter++;
 			continue;
 		}
-		init++;
-		switch (*init)
+		/* when element is '%' */
+		else
 		{
-			case 'i':
-				ival = va_arg(ptr, int);
-				printf("%i", ival);
-				break;
-			case 'b':
-				ival = va_arg(ptr, unsigned int);
-				printf("%i", ival);
-				break;
-			case 'd':
-				dval = va_arg(ptr, int);
-				printf("%d", dval);
-				break;
-			case 'f':
-				fval = va_arg(ptr, double);
-				printf("%f", fval);
-				break;
-			case 'c':
-				cval = (char)va_arg(ptr, int);
-				printf("%c", cval);
-				break;
-			case 's':
-				sval = va_arg(ptr, char *);
-				puts(sval);
-				break;
-			case 'o':
-				ival = va_arg(ptr, unsigned int);
-				printf("%o", ival);
-				break;
-			case'u':
-				ival = va_arg(ptr, unsigned int);
-				printf("%u", ival);
-				break;
-			case'x':
-				ival = va_arg(ptr, unsigned int);
-				printf("%x", ival);
-				break;
-			case'X':
-				ival = va_arg(ptr, unsigned int);
-				printf("%X", ival);
-				break;
-			case'p':
-				ival = (long)va_arg(ptr, void *);
-				printf("%#x", ival);
-				break;
-			default:
-				putchar('%');
-				putchar(*init);
-				break;
+			if (format[i + 1] == '%')
+			{
+				_putchar('%');
+				counter++;
+				i += 1;
+				continue;
+			}
+			else
+			{
+				f = check_format(&format[i + 1]);
+				if (f == NULL)
+					return (-1);
+				i += 1;
+				counter += f(ptr);
+				continue;
+			}
 		}
 	}
 	va_end(ptr);
-	return (count);
+	return (counter);
 }
