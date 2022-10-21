@@ -1,4 +1,4 @@
-#include "main.h"
+#include "holberton.h"
 #include <stdlib.h>
 
 /**
@@ -32,4 +32,3 @@ int print_S(va_list S)
 	}
 	return (counter);
 }
-

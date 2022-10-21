@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * print_c - A function that prints a char
  * @c: character to print
@@ -6,8 +7,8 @@
  */
 int print_c(va_list c)
 {
-	char ch = (char)va_arg(c, int);
+	char character = (char)va_arg(c, int);
 
-	_putchar(ch);
+	_putchar(character);
 	return (1);
 }

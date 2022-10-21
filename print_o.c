@@ -29,4 +29,3 @@ int print_o(va_list o)
 	}
 	return (counter);
 }
-

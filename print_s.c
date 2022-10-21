@@ -17,4 +17,3 @@ int print_s(va_list s)
 		_putchar(str[i++]);
 	return (i);
 }
-
