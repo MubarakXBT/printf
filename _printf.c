@@ -59,7 +59,7 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				sval = va_arg(ptr, char *);
-				printf("%s", sval);
+				puts(sval);
 				break;
 			case 'o':
 				ival = va_arg(ptr, unsigned int);
